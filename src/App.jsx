@@ -1,18 +1,44 @@
 import { useState } from "react";
 import "./App.css";
-export default function Counter() {
+function Counter() {
+  const [count, setCount] = useState(0);
+  function increment() {
+    setCount(count + 1);
+  }
+  function decrement() {
+    setCount(count - 1);
+  }
   return (
     <div>
-      <button>Generate</button>
-      <button>Reset</button>
+      <button className="Generate" onClick={increment}>
+        Generate
+      </button>
+      <button className="Reset" onClick={decrement}>
+        Reset
+      </button>
+      <CountDisplay value={count} />
+    </div>
+  );
+}
+function CountDisplay({ value }) {
+  return (
+    <div>
+      <span
+        style={{
+          color: "blue",
+          fontSize: "64px",
+        }}
+      >
+        {value}
+      </span>
     </div>
   );
 }
 
-function App() {
+export default function App() {
   return (
     <div>
-      <h1>App</h1>
+      <Counter />
     </div>
   );
 }

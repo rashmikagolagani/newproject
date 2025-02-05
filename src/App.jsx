@@ -1,22 +1,22 @@
 import { useState } from "react";
 import "./App.css";
-export default function Counter() {
-  const [count, setCount] = useState(0);
-  function increment() {
-    setCount(count + 1);
+export default function RandomNumberGenerator() {
+  const [randomNumber, setRandomNumber] = useState(0);
+  function generateRandomNumber() {
+    setRandomNumber(Math.floor(Math.random() * 200) + 1);
   }
-  function decrement() {
-    setCount(count - 1);
+  function resetNumber() {
+    setRandomNumber(0);
   }
   return (
     <div>
-      <button className="Generate" onClick={increment}>
+      <button className="Generate" onClick={generateRandomNumber}>
         Generate
       </button>
-      <button className="Reset" onClick={decrement}>
+      <button className="Reset" onClick={resetNumber}>
         Reset
       </button>
-      <CountDisplay value={count} />
+      <CountDisplay value={randomNumber} />
     </div>
   );
 }
